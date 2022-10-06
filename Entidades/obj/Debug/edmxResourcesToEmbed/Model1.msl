@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DynamicoreModelStoreContainer" CdmEntityContainer="DynamicoreEntities">
+    <EntitySetMapping Name="Acceso">
+      <EntityTypeMapping TypeName="DynamicoreModel.Acceso">
+        <MappingFragment StoreEntitySet="Acceso">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contactos">
+      <EntityTypeMapping TypeName="DynamicoreModel.Contactos">
+        <MappingFragment StoreEntitySet="Contactos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Directorio">
+      <EntityTypeMapping TypeName="DynamicoreModel.Directorio">
+        <MappingFragment StoreEntitySet="Directorio">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idContacto" ColumnName="idContacto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DynamicoreModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="DynamicoreModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="curp" ColumnName="curp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

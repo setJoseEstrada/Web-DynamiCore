@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DynamicoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Acceso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contrasena" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Contactos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="segundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="curp" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Directorio" Relationship="Self.FK__Directori__idCon__37A5467C" FromRole="Contactos" ToRole="Directorio" />
+  </EntityType>
+  <EntityType Name="Directorio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUsuario" Type="Int32" />
+    <Property Name="idContacto" Type="Int32" />
+    <NavigationProperty Name="Contactos" Relationship="Self.FK__Directori__idCon__37A5467C" FromRole="Directorio" ToRole="Contactos" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Directori__idUsu__36B12243" FromRole="Directorio" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="segundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="curp" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Directorio" Relationship="Self.FK__Directori__idUsu__36B12243" FromRole="Usuarios" ToRole="Directorio" />
+  </EntityType>
+  <Association Name="FK__Directori__idCon__37A5467C">
+    <End Role="Contactos" Type="Self.Contactos" Multiplicity="0..1" />
+    <End Role="Directorio" Type="Self.Directorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contactos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Directorio">
+        <PropertyRef Name="idContacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Directori__idUsu__36B12243">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Directorio" Type="Self.Directorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Directorio">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DynamicoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Acceso" EntityType="Self.Acceso" />
+    <EntitySet Name="Contactos" EntityType="Self.Contactos" />
+    <EntitySet Name="Directorio" EntityType="Self.Directorio" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK__Directori__idCon__37A5467C" Association="Self.FK__Directori__idCon__37A5467C">
+      <End Role="Contactos" EntitySet="Contactos" />
+      <End Role="Directorio" EntitySet="Directorio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Directori__idUsu__36B12243" Association="Self.FK__Directori__idUsu__36B12243">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Directorio" EntitySet="Directorio" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

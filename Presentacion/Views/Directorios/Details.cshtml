@@ -1,0 +1,45 @@
+﻿@model Entidades.Directorio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Directorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+      
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreContacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreContacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model Entidades.Directorio
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Directorio</h4>
+    <hr />
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.idUsuario, new SelectList(ViewBag.ListU, "id", "nombre"), "Selecciona un Usuario", new { @class = "form-control" })
+            @*@Html.EditorFor(model => model.NombreAlumno, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreContacto, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.idContacto, new SelectList(ViewBag.ListC, "id", "nombre"), "Selecciona un Contacto", new { @class = "form-control" })
+            @*@Html.EditorFor(model => model.NombreBeca, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.NombreContacto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
